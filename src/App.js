@@ -1,23 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+import CustomTable from './CustomTable/CustomTable';
+import { useEffect, useState } from "react";
 
 function App() {
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    setLoading(true);
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => setData(data.concat(json)))
+      .finally(() => setLoading(false));
+  }
+
+
+  const headers = [
+    {
+      dataIndex: "name",
+      title: "Name",
+      width: 120,
+      sorter: true
+    },
+    {
+      dataIndex: "email",
+      title: "Email",
+      width: 120,
+      sorter: false
+    },
+    {
+      dataIndex: "username",
+      title: "Username",
+      width: 120,
+      sorter: true
+    }
+  ];
+
+
+  if(loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" >
+          <CustomTable
+            headers={headers}
+            data={data}
+            onItemClick={(item) => console.log(item)}
+            onFilter={() => ({ mode: 'asc', field: 'name' })}
+            onRemoveItems={(deletedItems) => console.log(deletedItems)}
+            selectAll={true}
+          />
     </div>
   );
 }

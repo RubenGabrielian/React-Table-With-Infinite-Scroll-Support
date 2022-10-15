@@ -1,0 +1,71 @@
+.customTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.customTableTh {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #5dba2f;
+    color: white;
+    border: 1px solid #ddd;
+    padding: 13px;
+}
+
+.customTableTd {
+    border: 1px solid #ddd;
+    padding: 13px;
+}
+
+.customTableTr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.customTableFilterBtn {
+    margin-left: 8px;
+    padding: 1px 3px;
+    background: black;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.selectAll {
+    margin-top: 20px;
+    background-color: #005868;
+    padding: 10px 25px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.removeBtn {
+    margin-top: 20px;
+    background-color: #9f0202;
+    padding: 10px 25px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.removeBtn span {
+    padding-left: 5px;
+}
+button:disabled {
+    cursor: not-allowed;
+}
+.customTable {
+    max-height: 500px;
+    overflow-x: auto;
+  }
