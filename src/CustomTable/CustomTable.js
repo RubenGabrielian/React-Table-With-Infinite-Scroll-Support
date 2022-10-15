@@ -15,8 +15,8 @@ const CustomTable = ({
     onScroll
 }) => {
 
-    const [filterMode, setFilterMode] = useState(onFilter ? onFilter().mode : '');
-    const [filterField, setFilterField] = useState(onFilter ? onFilter().field : '');
+    const [filterMode, setFilterMode] = useState('');
+    const [filterField, setFilterField] = useState('');
     const [localData, setLocalData] = useState(data);
     const [loading, setLoading] = useState(true);
 

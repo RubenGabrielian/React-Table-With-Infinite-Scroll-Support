@@ -53,7 +53,7 @@ function App() {
             headers={headers}
             data={data}
             onItemClick={(item) => console.log(item)}
-            onFilter={() => ({ mode: 'asc', field: 'name' })}
+            onFilter={(mode, field) => console.log(mode, field)}
             onRemoveItems={(deletedItems) => console.log(deletedItems)}
             selectAll={true}
             // onScroll={() => console.log('scrolled')}
