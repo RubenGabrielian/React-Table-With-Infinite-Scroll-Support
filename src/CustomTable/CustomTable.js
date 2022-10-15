@@ -11,15 +11,22 @@ const CustomTable = ({
     onFilter,
     onRemoveItems,
     selectAll,
-    onItemClick
+    onItemClick,
+    onScroll
 }) => {
 
     const [filterMode, setFilterMode] = useState(onFilter ? onFilter().mode : '');
     const [filterField, setFilterField] = useState(onFilter ? onFilter().field : '');
     const [localData, setLocalData] = useState(data);
+    const [loading, setLoading] = useState(true);
 
     const fetchData = () => {
-        setLocalData(localData.concat(data));
+        if (onScroll) {
+            onScroll();
+            setLoading(false);
+        } else {
+            setLocalData(localData.concat(data));
+        }
     }
 
     useEffect(() => {
@@ -80,7 +87,7 @@ const CustomTable = ({
                     dataLength={localData.length}
                     next={fetchData}
                     hasMore={!!localData.length}
-                    loader={<h2>Loading...</h2>}
+                    loader={loading ? <h2>Loading...</h2> : null}
                     scrollableTarget="App"
                     endMessage={
                         <p style={{ textAlign: 'center' }}>

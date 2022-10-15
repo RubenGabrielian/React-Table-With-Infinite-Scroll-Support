@@ -56,6 +56,7 @@ function App() {
             onFilter={() => ({ mode: 'asc', field: 'name' })}
             onRemoveItems={(deletedItems) => console.log(deletedItems)}
             selectAll={true}
+            // onScroll={() => console.log('scrolled')}
           />
     </div>
   );
