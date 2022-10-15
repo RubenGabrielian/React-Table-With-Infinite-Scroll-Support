@@ -5,7 +5,7 @@ const TableTr = ({ dataItem, headers, handleSelectItem, onItemClick }) => {
     return (
         <tr onClick={() => onItemClick(dataItem)} className={styles.customTableTr} style={{ background: dataItem.isChecked ? "#858585" : '' }} >
             <td className={styles.customTableTd} >
-                <input checked={dataItem.isChecked} type="checkbox" onChange={(e) => handleSelectItem({
+                <input checked={dataItem.isChecked || false} type="checkbox" onChange={(e) => handleSelectItem({
                     ...dataItem, isChecked: e.target.checked
                 })} />
             </td>
